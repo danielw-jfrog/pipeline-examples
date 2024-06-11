@@ -114,6 +114,7 @@ def main():
     tmp_login_data['docker_url'] = str(tmp_login_data['host'].split('/')[2])
     tmp_login_data['docker_remote_url'] = "{}/{}".format(tmp_login_data['docker_url'], remote_repo_name)
     logging.info("  Artifactory Host: %s", tmp_login_data["host"])
+    logging.info("  Artifactory User: %s", tmp_login_data["user"])
     logging.info("  Remote Repository: %s", remote_repo_name)
     logging.info("  Docker Remote URL: %s", tmp_login_data['docker_remote_url'])
     docker_login(tmp_login_data)
