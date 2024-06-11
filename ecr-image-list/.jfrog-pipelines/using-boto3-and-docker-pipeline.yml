@@ -11,6 +11,7 @@ pipelines:
         readOnly:
           ARTIFACTORY_USER: danielw
           REMOTE_REPO: danielw-ecr-list-images-docker-remote
+          ECR_REPO: danielw-ecr-image-list-test
     steps:
     - name: RunPythonScript
       type: Bash

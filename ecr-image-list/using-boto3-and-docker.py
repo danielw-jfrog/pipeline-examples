@@ -86,6 +86,8 @@ def main():
 
     parser.add_argument("--remote-repo", default = os.getenv("REMOTE_REPO"),
                         help = "The name of the Artifactory remote repository that is pointed to the ECR repository.")
+    parser.add_argument("--ecr-repo", default = os.getenv("ECR_REPO"),
+                        help = "The name of the ECR repository to query for images.")
 
     parser.add_argument("--aws-access-key", default = os.getenv("int_aws_danielw_pipelines_accessKeyId", ""),
                         help = "The access key used for AWS authentication.")
