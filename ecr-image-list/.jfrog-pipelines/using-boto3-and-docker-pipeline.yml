@@ -7,7 +7,7 @@ resources:
 pipelines:
   - name: Pull Recent ECR Images - boto3 and docker
     steps:
-    - name: Run Python Script
+    - name: RunPythonScript
       type: Bash
       configuration:
         integrations:
