@@ -87,8 +87,10 @@ def main():
     parser.add_argument("--remote-repo", default = os.getenv("REMOTE_REPO"),
                         help = "The name of the Artifactory remote repository that is pointed to the ECR repository.")
 
-    parser.add_argument("--aws-profile", default = "default",
-                        help = "The profile used for AWS authentication.")
+    parser.add_argument("--aws-access-key", default = os.getenv("int_aws_danielw_pipelines_accessKeyId", ""),
+                        help = "The access key used for AWS authentication.")
+    parser.add_argument("--aws-secret-key", default = os.getenv("int_aws_danielw_pipelines_secretAccessKey", ""),
+                        help = "The secret key used for AWS authentication.")
 
     parser.add_argument("--days-to-pull", default = 1, type = int,
                         help = "The number of days of recent images to pull.")
@@ -118,7 +120,14 @@ def main():
     logging.info("  Remote Repository: %s", remote_repo_name)
     logging.info("  Docker Remote URL: %s", tmp_login_data['docker_remote_url'])
     docker_login(tmp_login_data)
-    aws_ecr_client = boto3.session.Session(profile_name = args.aws_profile).client("ecr") # Region needed here?
+
+    aws_session = boto3.Session(
+        aws_access_key_id = args.aws_access_key,
+        aws_secret_access_key = args.aws_secret_key,
+    )
+
+    #aws_ecr_client = boto3.session.Session(profile_name = args.aws_profile).client("ecr") # Region needed here?
+    aws_ecr_client = aws_session.client("ecr")
 
     # Getting the image list
     newer_than = datetime.datetime.now() - datetime.timedelta(days = args.days_to_pull)

@@ -17,6 +17,7 @@ pipelines:
       configuration:
         integrations:
           - name: artifactory
+          - name: aws_danielw_pipelines
         inputResources:
           - name: ecr_webhook
           - name: ecr_list_gitrepo
