@@ -5,7 +5,7 @@ resources:
       webhookName: webhook_ecr_list
 
 pipelines:
-  - name: Pull Recent ECR Images - boto3 and docker
+  - name: PullRecentECRImages_Boto3AndDocker
     steps:
     - name: RunPythonScript
       type: Bash
