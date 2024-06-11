@@ -1,5 +1,5 @@
 resources:
-  - name: danielw_gitrepo
+  - name: ecr_list_gitrepo
     type: GitRepo
     configuration:
       gitProvider: danielw_github

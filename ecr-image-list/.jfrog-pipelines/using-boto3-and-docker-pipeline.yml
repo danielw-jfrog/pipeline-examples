@@ -14,7 +14,7 @@ pipelines:
           - name: artifactory
         inputResources:
           - name: ecr_webhook
-          - name: danielw_gitrepo
+          - name: ecr_list_gitrepo
             trigger: false
       execution:
           onExecute:
