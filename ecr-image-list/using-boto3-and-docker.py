@@ -24,7 +24,7 @@ def get_ecr_images_newer_than(ecr_client, repo_name, newer_than):
         batch_count = batch_count + 1
         for entry in response["imageDetails"]:
             total_count = total_count + 1
-            if entry["imagePushedAt"].strftime("%Y-%m-%d") >= newer_than:
+            if entry["imagePushedAt"] >= newer_than:
                 image_count = image_count + 1
                 for tag in entry["imageTags"]:
                     result.append("{}:{}".format(entry["repositoryName"], tag))
