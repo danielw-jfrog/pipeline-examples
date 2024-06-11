@@ -11,7 +11,7 @@ pipelines:
       type: Bash
       configuration:
         integrations:
-          - name: artifactory
+          - name: arti_docker
         inputResources:
           - name: ecr_webhook
           - name: ecr_list_gitrepo

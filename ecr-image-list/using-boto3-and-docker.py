@@ -77,12 +77,12 @@ def main():
     parser = argparse.ArgumentParser(description = parser_description, formatter_class = argparse.RawTextHelpFormatter)
     parser.add_argument("-v", "--verbose", action = "store_true")
 
-    parser.add_argument("--user", default = os.getenv("ARTIFACTORY_USER", ""),
-                        help = "Artifactory user to use for requests.  Will use ARTIFACTORY_USER if not specified.")
-    parser.add_argument("--apikey", default = os.getenv("ARTIFACTORY_APIKEY", ""),
-                        help = "Artifactory apikey to use for requests.  Will use ARTIFACTORY_APIKEY if not specified.")
-    parser.add_argument("--host", default = os.getenv("ARTIFACTORY_HOST", ""),
-                        help = "Artifactory host URL (e.g. https://artifactory.example.com/) to use for requests.  Will use ARTIFACTORY_HOST if not specified.")
+    parser.add_argument("--user", default = os.getenv("int_arti_docker_username", ""),
+                        help = "Artifactory user to use for requests.  Will use 'int_arti_docker_username' if not specified.")
+    parser.add_argument("--apikey", default = os.getenv("int_arti_docker_password", ""),
+                        help = "Artifactory apikey to use for requests.  Will use 'int_arti_docker_password' if not specified.")
+    parser.add_argument("--host", default = os.getenv("int_arti_docker_url", ""),
+                        help = "Artifactory host URL (e.g. https://artifactory.example.com/) to use for requests.  Will use 'int_arti_docker_url' if not specified.")
 
     parser.add_argument("--remote-repo", default = os.getenv("REMOTE_REPO"),
                         help = "The name of the Artifactory remote repository that is pointed to the ECR repository.")
