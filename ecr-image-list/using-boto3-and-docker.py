@@ -24,6 +24,7 @@ def get_ecr_images_newer_than(ecr_client, repo_name, newer_than):
         batch_count = batch_count + 1
         for entry in response["imageDetails"]:
             total_count = total_count + 1
+            logging.debug("Image Entry: %s", entry)
             if entry["imagePushedAt"] >= newer_than:
                 image_count = image_count + 1
                 for tag in entry["imageTags"]:
@@ -135,7 +136,7 @@ def main():
     aws_ecr_client = aws_session.client("ecr")
 
     # Getting the image list
-    newer_than = datetime.datetime.now() - datetime.timedelta(days = args.days_to_pull)
+    newer_than = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days = args.days_to_pull)
     name_tags_to_pull = get_ecr_images_newer_than(aws_ecr_client, args.ecr_repo, newer_than)
 
     # Pulling each of the images
