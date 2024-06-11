@@ -136,7 +136,7 @@ def main():
 
     # Getting the image list
     newer_than = datetime.datetime.now() - datetime.timedelta(days = args.days_to_pull)
-    name_tags_to_pull = get_ecr_images_newer_than(aws_ecr_client, remote_repo_name, newer_than)
+    name_tags_to_pull = get_ecr_images_newer_than(aws_ecr_client, args.ecr_repo, newer_than)
 
     # Pulling each of the images
     for name_tag in name_tags_to_pull:
