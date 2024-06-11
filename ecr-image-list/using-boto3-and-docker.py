@@ -111,7 +111,7 @@ def main():
     }
     # FIXME: Not the nicest way to make this URL
     remote_repo_name = args.remote_repo
-    tmp_login_data['docker_url'] = str(tmp_login_data['arti_url'].split('/')[2])
+    tmp_login_data['docker_url'] = str(tmp_login_data['host'].split('/')[2])
     tmp_login_data['docker_remote_url'] = "{}/{}".format(tmp_login_data['docker_url'], remote_repo_name)
     logging.info("  Artifactory Host: %s", tmp_login_data["host"])
     logging.info("  Remote Repository: %s", remote_repo_name)
