@@ -29,4 +29,4 @@ pipelines:
             - cp ./dependencyState/resources/ecr_list_gitrepo/ecr-image-list/requirements.txt .
             - pip3 install -r requirements.txt
             - cp ./dependencyState/resources/ecr_list_gitrepo/ecr-image-list/using-boto3-and-docker.py .
-            - python3 using-boto3-and-docker.py --version
+            - python3 using-boto3-and-docker.py --verbose
