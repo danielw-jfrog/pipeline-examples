@@ -116,7 +116,7 @@ def main():
     logging.info("  Artifactory Host: %s", tmp_login_data["host"])
     logging.info("  Remote Repository: %s", remote_repo_name)
     logging.info("  Docker Remote URL: %s", tmp_login_data['docker_remote_url'])
-    docker_login(tmp_login_data, remote_repo_name)
+    docker_login(tmp_login_data)
     aws_ecr_client = boto3.session.Session(profile_name = args.aws_profile).client("ecr") # Region needed here?
 
     # Getting the image list
