@@ -10,6 +10,7 @@ pipelines:
       environmentVariables:
         readOnly:
           ARTIFACTORY_USER: danielw@jfrog.com
+          REMOTE_REPO: danielw-ecr-list-images-docker-remote
     steps:
     - name: RunPythonScript
       type: Bash
