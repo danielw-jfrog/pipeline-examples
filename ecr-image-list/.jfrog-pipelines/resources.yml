@@ -1,0 +1,8 @@
+resources:
+  - name: danielw_gitrepo
+    type: GitRepo
+    configuration:
+      gitProvider: danielw_github
+      path: danielw-jfrog/pipeline-examples
+      branches:
+        include: main

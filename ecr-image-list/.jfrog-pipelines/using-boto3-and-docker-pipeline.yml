@@ -1,0 +1,25 @@
+resources:
+  - name: ecr_webhook
+    type: IncomingWebhook
+    configuration:
+      webhookName: webhook_ecr_list
+
+pipelines:
+  - name: Pull Recent ECR Images - boto3 and docker
+    steps:
+    - name: Run Python Script
+      type: Bash
+      configuration:
+        integrations:
+          - name: artifactory
+        inputResources:
+          - name: ecr_webhook
+          - name: danielw_gitrepo
+            trigger: false
+      execution:
+          onExecute:
+            - python3 --version
+            - pip3 --version
+            - ls -lR
+            - cp ./dependencyState/resources/danielw_gitrepo/using-boto3-and-docker-pipeline.py .
+            - python3 using-boto3-and-docker-pipeline.py
