@@ -6,12 +6,16 @@ resources:
 
 pipelines:
   - name: PullRecentECRImages_Boto3AndDocker
+    configuration:
+      environmentVariables:
+        readOnly:
+          ARTIFACTORY_USER: danielw@jfrog.com
     steps:
     - name: RunPythonScript
       type: Bash
       configuration:
         integrations:
-          - name: arti_docker
+          - name: artifactory
         inputResources:
           - name: ecr_webhook
           - name: ecr_list_gitrepo
