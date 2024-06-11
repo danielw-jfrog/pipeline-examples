@@ -91,6 +91,8 @@ def main():
                         help = "The access key used for AWS authentication.")
     parser.add_argument("--aws-secret-key", default = os.getenv("int_aws_danielw_pipelines_secretAccessKey", ""),
                         help = "The secret key used for AWS authentication.")
+    parser.add_argument("--aws-region", default = "us-west-2",
+                        help = "The region for the AWS authentication.")
 
     parser.add_argument("--days-to-pull", default = 1, type = int,
                         help = "The number of days of recent images to pull.")
@@ -124,6 +126,7 @@ def main():
     aws_session = boto3.Session(
         aws_access_key_id = args.aws_access_key,
         aws_secret_access_key = args.aws_secret_key,
+        region_name = args.aws_region
     )
 
     #aws_ecr_client = boto3.session.Session(profile_name = args.aws_profile).client("ecr") # Region needed here?
